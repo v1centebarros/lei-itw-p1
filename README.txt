@@ -1,0 +1,23 @@
+Este trabalho contém os seguintes componentes:
+
+-> Navbar
+-> Autocomplete
+-> Cards
+-> Modal
+-> Navegação por página
+-> LocalStorage para os favoritos, Ver mais tarde e Vistos
+-> Carrossel
+-> Font Awesome para a navbar
+-> Imagens dos Títulos (os Títulos que não têm imagem ficam com uma default)
+-> Pesquisa com selectMenu(jQuery UI) por tipo (Filmes, Séries, Últimos lançamentos)
+-> Jumbotron
+-> Tabs
+-> Pesquisa com selectMenu (jQuery UI) por categoria
+-> Pesquisa com datepicker (jQuery UI com plugin datepicker) através do ano
+-> Pesquisa com Geochart (Google Charts) através do país
+-> Formulário de sugestões (contém um range para a classificação)
+-> Footer
+-> Tabela para guardar os dados inseridos no formulário que posteriormente ficam guardados no LocalStorage
+-> Gráficos para mostrar algumas estatísticas da API (Google Charts)
+-> No profile aparece os títulos que o utilizador selecionou nos favoritos, Ver mais tarde e Vistos onde podem ser Sortable (jQuery UI)
+-> No profile a pessoa pode pesquisar com o Autocomplete e o título irá aparecer nas listas automaticamente

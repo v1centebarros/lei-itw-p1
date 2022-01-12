@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+.card {
+  min-height: 295px;
+  max-height: 295px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.card:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
+
+.card-body {
+  color: rgb(255, 2, 2);
+  padding-bottom: 0px;
+  font-size: 1.8em;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: #fff;
+  text-decoration: none;
+  background-color: #c00;
+  border-color: transparent;
+}
+
+.page-link:focus {
+  z-index: 3;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(228, 0, 0, 0.473);
+}
+
+#page-numbers {
+  font-size: 1.2em;
+}
+
+#searchbar {
+  width: 20vw;
+}
+
+/** MODAL*/
+
+.modal-title {
+  color: #c00;
+  font-size: 3.2em;
+}
+
+.modal-year {
+  color: #5c5c5c9c;
+  font-size: 2.2em;
+  padding-left: 12px;
+}
+
+.rating-img {
+  width: 50px;
+  height: 50px;
+}
+
+.categories-list {
+  list-style: none;
+  font-size: .8em;
+}
+.categories-list li {
+  padding-right: 5px;
+  border-right: 1px solid #ccc;
+}
+
+
+.categories-list li:last-child {
+  padding-right: 5px;
+  border-right: none;
+}
+
+.modal-img {
+  min-height: 450px;
+}
+
+.button-container {
+  width: 40%;
+  padding-top: 400px;
+}
+
+.duration-label {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.time-info {
+  margin-left: 12px;
+}
+
+.description-container {
+  font-size: 1.5em;
+  margin:0 auto;
+  padding-left: 12px;
+  text-indent: 8px;
+}
+
+.info-heading {
+  font-size: 1.2em;
+  font-weight: bold;
+}

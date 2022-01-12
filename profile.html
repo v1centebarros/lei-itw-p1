@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Netflix | Profile</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!--Custom Bootstrap-->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/jquery-ui/jquery-ui.css">
+    <script src="https://kit.fontawesome.com/97a6e4f33c.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="./index.html">
+            <img src="img/Netflix_Logo_RGB.png" height="50px" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav mr-auto ">
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="titles.html"><i class="fas fa-ticket-alt fa-2x"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="profile.html"><i class="fas fa-user fa-2x"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="sugestoes.html"><i class="fas fa-info-circle fa-2x"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="graficos.html"><i class="fas fa-chart-bar fa-2x"></i></a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-1 col-12" id="searchbar" name="searchbar" type="text"
+                    placeholder="Pesquisar">
+            </form>
+        </div>
+    </nav>
+    <!--/NAVBAR-->
+
+
+    <div class="container my-2">
+
+        <h3><i class="text-danger fas fa-heart pr-2"></i>Favoritos </h3>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+        <div id="favsContainer" class="row" data-bind="foreach:favsData">
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+                <div class="card"
+                    data-bind="click: $parent.loadTitleModal.bind($data,Id), clickBubble: false, style: { backgroundImage: 'url(\'' + img + '\')' }">
+                    <div class="card-body" data-bind="text:Name"></div>
+                </div>
+            </div>
+        </div>
+
+        <h3><i class="fas fa-check text-danger pl-2"></i> Vistos: </h3>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+        <div id="seenContainer" class="row" data-bind="foreach:seenData">
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+                <div class="card"
+                    data-bind="click: $parent.loadTitleModal.bind($data,Id), clickBubble: false, style: { backgroundImage: 'url(\'' + img + '\')' }">
+                    <div class="card-body" data-bind="text:Name"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <h3><i class="far fa-clock text-danger pr-2"></i>Ver mais tarde: </h3>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+        <div id="watchLaterContainer" class="row" data-bind="foreach:watchLaterData">
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+                <div class="card"
+                    data-bind="click: $parent.loadTitleModal.bind($data,Id), clickBubble: false, style: { backgroundImage: 'url(\'' + img + '\')' }">
+                    <div class="card-body" data-bind="text:Name"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--MODAL-->
+    <div id="titleModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="titleModal"
+        aria-h idden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" data-bind="with:titleData">
+                <!--Modal é preciso usar um container do bootstrap-->
+                <div class="container row">
+                    <div class="col-12 row">
+                        <div class="col-10">
+                            <span class="modal-title" data-bind="text:Name"></span>
+                            <span class="modal-year"><span>&#40;</span><span
+                                    data-bind="text:ReleaseYear"></span><span>&#x29;</span></span>
+                        </div>
+                        <img class="col-2 rating-img mt-2" data-bind="attr:{src:'./img/ratings/'+Rating.Code+'.svg'}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 time-info">
+                        <span data-bind="text:Type.Name"></span>
+                        <span>-</span>
+                        <span class="duration-label" data-bind="text:Duration"></span>
+                    </div>
+                </div>
+
+
+                <div class="modal-img " data-bind="style: { backgroundImage: 'url(' + img + ')' }">
+                    <div class="row ml-auto">
+                        <div class="col-6 button-container container-fluid row">
+                            <button type="button" id="favs-button" class="col-12 col-sm-4 btn btn-outline-danger"
+                                data-bind="click: $parent.updateMetaData.bind($data,Id,'favs')"><i
+                                    class="far fa-heart"></i></button>
+
+                            <button type="button" id="watchLater-button"
+                                class="col-12 col-sm-4 btn btn-outline-secondary"
+                                data-bind="click: $parent.updateMetaData.bind($data,Id,'watchLater')"><i
+                                    class="far fa-clock"></i></button>
+                            <button type="button" id="seen-button" class="col-12 col-sm-4 btn btn-outline-success"
+                                data-bind="click: $parent.updateMetaData.bind($data,Id,'seen')"><i
+                                    class="fas fa-check"></i></button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="description-container" data-bind="text:Description"></div>
+
+                <span class="info-heading">Géneros:</span>
+                <ul class="categories-list col-12" data-bind="foreach:Categories">
+                    <li class="d-inline" data-bind="text:Name"></li>
+                </ul>
+
+                <span class="info-heading">Realizadores:</span>
+                <ul class="categories-list col-12" data-bind="foreach:Directors">
+                    <li data-bind="text:Name"></li>
+                </ul>
+
+                <span class="info-heading">Actores:</span>
+                <ul class="categories-list col-12" data-bind="foreach:Actors">
+                    <li class="d-inline" data-bind="text:Name"></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!--/MODAL-->
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.js"></script>
+    <!--jQuery CDN-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+    </script>
+
+    <script src="./css/jquery-ui/jquery-ui.min.js"></script>
+
+    <!--Bootstrap CDN-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script src="./js/images.js"></script>
+    <script src="./viewmodels/profile.js"></script>
+    <script>
+        $(document).ready(function () {
+            p = new Profile
+            const api_url = "http://192.168.160.58/netflix/api/Search/Titles";
+            ko.applyBindings(p);
+            $("#watchLaterContainer").sortable();
+            $("#watchLaterContainer").disableSelection();
+            $("#favsContainer").sortable();
+            $("#favsContainer").disableSelection();
+            $("#seenContainer").sortable();
+            $("#seenContainer").disableSelection();
+
+
+            $("#searchbar").autocomplete({
+                minLength: 4,
+                source: function (request, response) {
+                    $.ajax({
+                        type: "GET",
+                        url: api_url,
+                        data: {
+                            name: $('#searchbar').val().toLowerCase()
+                        },
+                        success: function (data) {
+                            if (!data.length) {
+                                var result = [{
+                                    label: 'No matches found',
+                                    value: response.term
+                                }];
+                                response(result);
+                            } else {
+
+                                var nData = $.map(data, function (value, key) {
+                                    return {
+                                        label: value.Name,
+                                        value: value.Id
+                                    }
+                                });
+                                results = $.ui.autocomplete.filter(nData, request.term);
+                                response(results);
+                            }
+                        },
+                        error: function () {
+                            alert("error!");
+                        }
+                    })
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+                    $("#searchbar").val(ui.item.label);
+                    p.loadTitleModal(ui.item.value)
+                },
+                focus: function (event, ui) {
+                    $("#searchbar").val(ui.item.label);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
